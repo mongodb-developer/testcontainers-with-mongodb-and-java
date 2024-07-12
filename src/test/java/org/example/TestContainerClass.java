@@ -4,6 +4,7 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.junit.jupiter.api.*;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestContainerClass {
     @Container
+    @ServiceConnection
     private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0.0");
     private MongoClient mongoClient;
     private MongoDatabase database;
@@ -25,7 +27,6 @@ public class TestContainerClass {
 
     @BeforeAll
     public void setup() {
-        mongoDBContainer.start();
         String uri = mongoDBContainer.getConnectionString();
         mongoClient = MongoClients.create(uri);
         database = mongoClient.getDatabase("testdb");
@@ -63,6 +64,5 @@ public class TestContainerClass {
     @AfterAll
     public void cleanup() {
         mongoClient.close();
-        mongoDBContainer.stop();
     }
 }
