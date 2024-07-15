@@ -3,11 +3,14 @@ package org.example;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
-import org.junit.jupiter.api.*;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestContainerClass {
     @Container
-    @ServiceConnection
     private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0.0");
     private MongoClient mongoClient;
     private MongoDatabase database;
