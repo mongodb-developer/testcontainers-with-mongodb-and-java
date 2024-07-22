@@ -1,16 +1,14 @@
 package org.example;
 
 import com.mongodb.client.*;
-import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class TestContainers {
+public class Testcontainers {
 
     public static void main(String[] args) {
-        //String uri = "mongodb+srv://theuser:pwd@cluster0.k5dqp.mongodb.net";
         String uri = System.getenv("MONGODB_URI");
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("sample_mflix");

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Testcontainers
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-public class TestContainerClass {
+public class TestcontainerClass {
     @Container
     private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:7.0.0");
     private MongoClient mongoClient;
